@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>20 Notas de Amor — Hello Kitty & Snoopy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-decor" aria-hidden="true">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+  </div>
+
+  <!-- Barra superior -->
+  <header class="topbar">
+    <div class="progress-pill" id="globalProgressPill">
+      <span> Descubiertas:</span>
+      <strong id="totalDiscoveredCount">0 / 20</strong>
+    </div>
+    <button class="btn-edit" id="openEditorBtn" type="button">
+       Editar las 20 notas
+    </button>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="stage-wrapper">
+    <section class="hero-header">
+      <h1 id="mainTitle">Para la persona más especial de mi vida</h1>
+      <p class="subtitle">
+        Hello Kitty y Snoopy tienen <strong>10 notas secretas</strong> cada uno para ti. ¡Tócalos para leerlas!
+      </p>
+    </section>
+
+    <!-- Escenario de personajes -->
+    <section class="characters-arena" aria-label="Personajes interactivos">
+      
+      <!-- TARJETA HELLO KITTY -->
+      <article class="character-spot kitty-spot">
+        <div class="counter-badge kitty-badge">
+           Notas de Kitty: <span id="kittyCount">0/10</span>
+        </div>
+
+        <button
+          class="character-trigger"
+          id="kittyTrigger"
+          type="button"
+          aria-label="Tocar a Hello Kitty para abrir una nota de amor"
+        >
+          <!-- Rótulo flotante -->
+          <div class="signboard kitty-sign">
+            <span class="sign-pin"></span>
+            <span class="sign-text">¡Tócame!</span>
+            <span class="sign-sub">Haz clic aquí</span>
+          </div>
+
+          <!-- Dibujo SVG de Hello Kitty -->
+          <svg class="character-svg kitty-svg" viewBox="0 0 260 280" width="240" height="260">
+            <!-- Sombra en el suelo -->
+            <ellipse cx="130" cy="264" rx="72" ry="12" fill="rgba(219, 112, 147, 0.22)" />
+
+            <!-- Patitas -->
+            <ellipse cx="102" cy="246" rx="22" ry="16" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" />
+            <ellipse cx="158" cy="246" rx="22" ry="16" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" />
+
+            <!-- Brazos (camiseta amarilla) -->
+            <g class="arm-left">
+              <ellipse cx="72" cy="182" rx="18" ry="26" transform="rotate(28 72 182)" fill="#FFD93D" stroke="#2D232E" stroke-width="4.5" />
+              <circle cx="58" cy="198" r="13" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" />
+            </g>
+            <g class="arm-right">
+              <ellipse cx="188" cy="182" rx="18" ry="26" transform="rotate(-28 188 182)" fill="#FFD93D" stroke="#2D232E" stroke-width="4.5" />
+              <circle cx="202" cy="198" r="13" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" />
+            </g>
+
+            <!-- Cuerpo / Overol azul -->
+            <path d="M84 166 C84 150, 176 150, 176 166 L186 234 C186 244, 74 244, 74 234 Z" fill="#4D96FF" stroke="#2D232E" stroke-width="4.5" stroke-linejoin="round" />
+            <!-- Pechera del overol -->
+            <rect x="98" y="156" width="64" height="44" rx="8" fill="#4D96FF" stroke="#2D232E" stroke-width="4.5" />
+            <!-- Tirantes y botones amarillos -->
+            <path d="M98 156 L92 172" stroke="#2D232E" stroke-width="4.5" stroke-linecap="round" />
+            <path d="M162 156 L168 172" stroke="#2D232E" stroke-width="4.5" stroke-linecap="round" />
+            <circle cx="105" cy="174" r="5.5" fill="#FFD93D" stroke="#2D232E" stroke-width="3" />
+            <circle cx="155" cy="174" r="5.5" fill="#FFD93D" stroke="#2D232E" stroke-width="3" />
+            <!-- Corazón decorativo en el overol -->
+            <path d="M130 212 C130 212, 117 202, 117 194 C117 189, 121 186, 125 186 C128 186, 130 188, 130 190 C130 188, 132 186, 135 186 C139 186, 143 189, 143 194 C143 202, 130 212, 130 212 Z" fill="#FF5D8F" />
+
+            <!-- Cabeza ovalada -->
+            <path d="M62 108 C62 66, 198 66, 198 108 C198 152, 168 164, 130 164 C92 164, 62 152, 62 108 Z" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" />
+
+            <!-- Orejas -->
+            <path d="M68 88 L64 46 C64 41, 70 39, 74 42 L104 68" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" stroke-linejoin="round" />
+            <path d="M192 88 L196 46 C196 41, 190 39, 186 42 L156 68" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" stroke-linejoin="round" />
+
+            <!-- Moño rojo icónico -->
+            <g transform="translate(168, 58) rotate(22)">
+              <ellipse cx="-18" cy="0" rx="17" ry="14" fill="#FF3B5C" stroke="#2D232E" stroke-width="4" />
+              <ellipse cx="18" cy="0" rx="17" ry="14" fill="#FF3B5C" stroke="#2D232E" stroke-width="4" />
+              <circle cx="-8" cy="0" r="4.5" fill="#D91E42" stroke="#2D232E" stroke-width="2.5" />
+              <circle cx="8" cy="0" r="4.5" fill="#D91E42" stroke="#2D232E" stroke-width="2.5" />
+              <circle cx="0" cy="0" r="9.5" fill="#FF3B5C" stroke="#2D232E" stroke-width="4" />
+            </g>
+
+            <!-- Ojos, nariz y bigotes -->
+            <ellipse cx="98" cy="118" rx="6.5" ry="9" fill="#2D232E" />
+            <ellipse cx="162" cy="118" rx="6.5" ry="9" fill="#2D232E" />
+            <ellipse cx="130" cy="130" rx="8.5" ry="6" fill="#FFD93D" stroke="#2D232E" stroke-width="3.5" />
+            <!-- Mejillas rosadas -->
+            <ellipse cx="86" cy="132" rx="9" ry="5" fill="#FFB3C6" opacity="0.75" />
+            <ellipse cx="174" cy="132" rx="9" ry="5" fill="#FFB3C6" opacity="0.75" />
+
+            <!-- Bigotes izquierdos -->
+            <line x1="44" y1="108" x2="72" y2="112" stroke="#2D232E" stroke-width="4" stroke-linecap="round" />
+            <line x1="40" y1="122" x2="70" y2="122" stroke="#2D232E" stroke-width="4" stroke-linecap="round" />
+            <line x1="46" y1="136" x2="73" y2="132" stroke="#2D232E" stroke-width="4" stroke-linecap="round" />
+            <!-- Bigotes derechos -->
+            <line x1="216" y1="108" x2="188" y2="112" stroke="#2D232E" stroke-width="4" stroke-linecap="round" />
+            <line x1="220" y1="122" x2="190" y2="122" stroke="#2D232E" stroke-width="4" stroke-linecap="round" />
+            <line x1="214" y1="136" x2="187" y2="132" stroke="#2D232E" stroke-width="4" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <button class="btn-view-all kitty-all" id="kittyViewAllBtn" type="button">
+          Ver las 10 notas de Kitty
+        </button>
+      </article>
+
+      <!-- Corazón central conector -->
+      <div class="center-connector" aria-hidden="true">
+        <div class="floating-heart">💕</div>
+      </div>
+
+      <!-- TARJETA SNOOPY -->
+      <article class="character-spot snoopy-spot">
+        <div class="counter-badge snoopy-badge">
+          🐾 Notas de Snoopy: <span id="snoopyCount">0/10</span>
+        </div>
+
+        <button
+          class="character-trigger"
+          id="snoopyTrigger"
+          type="button"
+          aria-label="Hacer clic en Snoopy para abrir una nota de amor"
+        >
+          <!-- Rótulo flotante -->
+          <div class="signboard snoopy-sign">
+            <span class="sign-pin">🐾</span>
+            <span class="sign-text">¡Hazme clic!</span>
+            <span class="sign-sub">Tengo 10 notas</span>
+          </div>
+
+          <!-- Dibujo SVG de Snoopy + Woodstock -->
+          <svg class="character-svg snoopy-svg" viewBox="0 0 260 280" width="240" height="260">
+            <!-- Sombra en el suelo -->
+            <ellipse cx="130" cy="264" rx="70" ry="12" fill="rgba(45, 35, 46, 0.14)" />
+
+            <!-- Pequeña casita roja decorativa atrás -->
+            <g transform="translate(172, 178)">
+              <polygon points="32,0 64,28 0,28" fill="#E63946" stroke="#2D232E" stroke-width="3.5" stroke-linejoin="round" />
+              <rect x="8" y="28" width="48" height="52" fill="#E63946" stroke="#2D232E" stroke-width="3.5" />
+              <path d="M22 80 L22 52 C22 44, 42 44, 42 52 L42 80 Z" fill="#2D232E" />
+            </g>
+
+            <!-- Woodstock en la cabeza de Snoopy -->
+            <g class="woodstock" transform="translate(115, 22)">
+              <path d="M12 28 C6 28, 4 20, 10 16 C8 10, 14 4, 20 8 C24 3, 30 6, 28 12 C34 14, 34 24, 26 28 Z" fill="#FFD93D" stroke="#2D232E" stroke-width="3.2" stroke-linejoin="round" />
+              <path d="M27 17 L37 15 L29 22 Z" fill="#FF9F1C" stroke="#2D232E" stroke-width="2.5" stroke-linejoin="round" />
+              <circle cx="22" cy="14" r="2.2" fill="#2D232E" />
+              <line x1="16" y1="28" x2="14" y2="35" stroke="#2D232E" stroke-width="2.8" stroke-linecap="round" />
+              <line x1="22" y1="28" x2="24" y2="35" stroke="#2D232E" stroke-width="2.8" stroke-linecap="round" />
+            </g>
+
+            <!-- Colita -->
+            <path d="M84 212 Q66 202 72 192 Q80 198 88 206" fill="#FFFFFF" stroke="#2D232E" stroke-width="4" stroke-linecap="round" />
+
+            <!-- Patitas -->
+            <ellipse cx="104" cy="248" rx="23" ry="13" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" />
+            <line x1="92" y1="248" x2="92" y2="257" stroke="#2D232E" stroke-width="3" stroke-linecap="round" />
+            <line x1="102" y1="249" x2="102" y2="258" stroke="#2D232E" stroke-width="3" stroke-linecap="round" />
+
+            <ellipse cx="152" cy="248" rx="23" ry="13" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" />
+            <line x1="154" y1="249" x2="154" y2="258" stroke="#2D232E" stroke-width="3" stroke-linecap="round" />
+            <line x1="164" y1="248" x2="164" y2="257" stroke="#2D232E" stroke-width="3" stroke-linecap="round" />
+
+            <!-- Cuerpo blanco -->
+            <path d="M92 152 C84 182, 82 238, 128 238 C172 238, 170 182, 160 152 Z" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" />
+            <!-- Mancha negra en la espalda -->
+            <ellipse cx="92" cy="196" rx="8" ry="15" transform="rotate(-10 92 196)" fill="#2D232E" />
+
+            <!-- Brazos -->
+            <path d="M94 164 C74 176, 74 204, 92 208 C102 210, 106 196, 104 184" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" stroke-linecap="round" />
+            <path d="M158 164 C178 176, 178 204, 160 208 C150 210, 146 196, 148 184" fill="#FFFFFF" stroke="#2D232E" stroke-width="4.5" stroke-linecap="round" />
+
+            <!-- Collar rojo -->
+            <rect x="98" y="144" width="56" height="11" rx="5" fill="#E63946" stroke="#2D232E" stroke-width="4" />
+
+            <!-- Cabeza icónica de Snoopy (perfil amigable) -->
+            <path
+              d="M92 78
+                 C92 48, 148 46, 156 76
+                 C162 84, 198 84, 202 108
+                 C205 128, 182 142, 152 142
+                 C128 144, 92 140, 92 108 Z"
+              fill="#FFFFFF"
+              stroke="#2D232E"
+              stroke-width="4.5"
+              stroke-linejoin="round"
+            />
+
+            <!-- Oreja negra caída -->
+            <path
+              d="M98 88
+                 C76 92, 68 126, 80 144
+                 C90 156, 110 146, 110 124
+                 C110 106, 106 92, 98 88 Z"
+              fill="#2D232E"
+              stroke="#2D232E"
+              stroke-width="3.5"
+            />
+
+            <!-- Nariz negra grande -->
+            <ellipse cx="199" cy="102" rx="10" ry="8" fill="#2D232E" />
+            <ellipse cx="196" cy="99" rx="3" ry="2" fill="#FFFFFF" opacity="0.6" />
+
+            <!-- Ojo y ceja -->
+            <ellipse cx="145" cy="92" rx="4.5" ry="7" fill="#2D232E" />
+            <path d="M138 78 Q145 73 152 78" fill="none" stroke="#2D232E" stroke-width="3.2" stroke-linecap="round" />
+
+            <!-- Sonrisa dulce -->
+            <path d="M148 124 Q170 132 188 120" fill="none" stroke="#2D232E" stroke-width="3.8" stroke-linecap="round" />
+            <!-- Mejilla -->
+            <ellipse cx="144" cy="112" rx="8" ry="4.5" fill="#FFB3C6" opacity="0.75" />
+          </svg>
+        </button>
+
+        <button class="btn-view-all snoopy-all" id="snoopyViewAllBtn" type="button">
+          Ver las 10 notas de Snoopy
+        </button>
+      </article>
+
+    </section>
+
+    <!-- Banner de celebración al descubrir las 20 -->
+    <section class="completion-banner hidden" id="completionBanner">
+      <h2> ¡Descubriste las 20 notas de amor! </h2>
+      <p>Cada una es un pedacito de todo lo que siento por ti. Gracias por existir y hacer mis días tan felices.</p>
+    </section>
+  </main>
+
+  <!-- MODAL: NOTA INDIVIDUAL -->
+  <div class="modal-backdrop hidden" id="noteModal" role="dialog" aria-modal="true" aria-labelledby="noteModalTitle">
+    <div class="modal-card note-card" id="noteCardContainer">
+      <button class="modal-close" id="closeNoteModalBtn" type="button" aria-label="Cerrar nota">✕</button>
+
+      <div class="note-header-tag" id="noteCharacterTag"> Nota de Hello Kitty</div>
+      <h2 class="note-number" id="noteModalTitle">Nota 1 de 10</h2>
+
+      <div class="note-paper">
+        <p class="note-message" id="noteMessageText">...</p>
+      </div>
+
+      <!-- Puntos de progreso 1..10 -->
+      <div class="dots-row" id="noteDotsRow" aria-label="Progreso de notas"></div>
+
+      <div class="note-controls">
+        <button class="btn-nav" id="prevNoteBtn" type="button">← Anterior</button>
+        <button class="btn-nav primary" id="nextNoteBtn" type="button">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: VER LAS 10 JUNTAS -->
+  <div class="modal-backdrop hidden" id="allNotesModal" role="dialog" aria-modal="true" aria-labelledby="allNotesTitle">
+    <div class="modal-card all-notes-card">
+      <button class="modal-close" id="closeAllNotesBtn" type="button" aria-label="Cerrar lista">✕</button>
+      <h2 id="allNotesTitle">Las 10 Notas</h2>
+      <div class="all-notes-list" id="allNotesList"></div>
+    </div>
+  </div>
+
+  <!-- MODAL: EDITOR PERSONALIZADO -->
+  <div class="modal-backdrop hidden" id="editorModal" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
+    <div class="modal-card editor-card">
+      <button class="modal-close" id="closeEditorBtn" type="button" aria-label="Cerrar editor">✕</button>
+      <h2 id="editorTitle"> Personalizar Título y las 20 Notas</h2>
+      <p class="editor-hint">Todos tus cambios se guardan automáticamente en este navegador.</p>
+
+      <div class="editor-field">
+        <label for="titleInput">Título principal:</label>
+        <input type="text" id="titleInput" maxlength="90" />
+      </div>
+
+      <div class="editor-tabs">
+        <button type="button" class="tab-btn active" data-tab="kitty"> 10 Notas de Hello Kitty</button>
+        <button type="button" class="tab-btn" data-tab="snoopy"> 10 Notas de Snoopy</button>
+      </div>
+
+      <div class="editor-list" id="editorNotesList"></div>
+
+      <div class="editor-footer">
+        <button type="button" class="btn-reset" id="resetDefaultsBtn">Restaurar originales</button>
+        <button type="button" class="btn-save" id="saveEditorBtn">Guardar cambios </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor de partículas flotantes -->
+  <div id="particlesLayer" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
